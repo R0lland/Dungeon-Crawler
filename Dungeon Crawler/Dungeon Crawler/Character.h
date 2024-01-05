@@ -9,7 +9,7 @@ private:
 	int _health;
 	int _damage;
 public:
-	Character(std::string name, int health, int damage);
+	Character(std::string name);
 	int GetHealth();
 	int GetDamage();
 	std::string GetName();

@@ -1,9 +1,12 @@
 #include "Character.h"
 
-Character::Character(std::string name, int health, int damage) {
+const int STARTING_HEALTH = 200;
+const int STARTING_DAMAGE = 10;
+
+Character::Character(std::string name) {
 	_name = name;
-	_health = health;
-	_damage = damage;
+	_health = STARTING_HEALTH;
+	_damage = STARTING_DAMAGE;
 }
 
 int Character::GetHealth() {
