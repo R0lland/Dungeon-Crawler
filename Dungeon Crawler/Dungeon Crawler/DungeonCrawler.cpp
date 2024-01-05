@@ -11,15 +11,16 @@ std::vector<Enemy> CreateEnemies(int numberOfEnemies) {
     for (int i = 0; i < numberOfEnemies; i++)
     {
         Enemy enemy = CreateEnemy();
-        //std::cout << "Enemy: " << enemy.GetDamage() << ", " << enemy.GetHealth() << ", " << enemy.GetSize() << std::endl;
+        std::cout << "Enemy: " << enemy.GetDamage() << ", " << enemy.GetHealth() << ", " << GetEnumName(enemy.GetSize()) << std::endl;
         enemies.push_back(enemy);
     }
     return enemies;
 }
 
-bool CharacterAttacksEnemy(Enemy& enemy, int damage) {
-    enemy.TakeDamage(damage);
-    std::cout << "[Character] attacks [enemy], now has health: " << enemy.GetHealth() << std::endl;
+bool CharacterAttacksEnemy(Enemy& enemy, Character& character) {
+    enemy.TakeDamage(character.GetDamage());
+    std::cout << "[" << character.GetName() << "] attacks [enemy]" << std::endl;
+    std::cout << "[enemy] Health: " << enemy.GetHealth() << std::endl;
     if (enemy.GetHealth() <= 0) {
         return true;
     }
@@ -28,7 +29,8 @@ bool CharacterAttacksEnemy(Enemy& enemy, int damage) {
 
 bool EnemyAttacksCharacter(Character& character, int damage) {
     character.TakeDamage(damage);
-    std::cout << "[Enemy] attacks [" << character.GetName() << "], now has health :" << character.GetHealth() << std::endl;
+    std::cout << "[Enemy] attacks [" << character.GetName() << "]" << std::endl;
+    std::cout << "[" << character.GetName() << "] Health: " << character.GetHealth() << std::endl;
     if (character.GetHealth() <= 0) {
         return true;
     }
@@ -39,8 +41,9 @@ void Battle(Character& character, Enemy& enemy) {
     int startingTurn = RandomizeMinMax(0, 1);
 
     while (enemy.GetHealth() > 0) {
+        std::cout << std::endl;
         if (startingTurn == 0) {
-            if (CharacterAttacksEnemy(enemy, character.GetDamage())) {
+            if (CharacterAttacksEnemy(enemy, character)) {
                 return;
             }
             if (EnemyAttacksCharacter(character, enemy.GetDamage())) {
@@ -51,35 +54,45 @@ void Battle(Character& character, Enemy& enemy) {
             if (EnemyAttacksCharacter(character, enemy.GetDamage())) {
                 return;
             }
-            if (CharacterAttacksEnemy(enemy, character.GetDamage())) {
+            if (CharacterAttacksEnemy(enemy, character)) {
                 return;
             }
         }
     }
 }
 
-
-
-void FinishCombat(bool win) {
+void FinishCombat(bool win, std::map<Sizes, int>& enemiesKilled) {
+    std::cout << std::endl;
     if (win) {
         std::cout << "You Win!" << std::endl;
     }
     else {
         std::cout << "You Lose!" << std::endl;
     }
+    std::cout << "Enemies Slain:" << std::endl;
+    std::map<Sizes, int>::iterator it;
+    for (it = enemiesKilled.begin(); it != enemiesKilled.end(); it++)
+    {
+        std::cout << GetEnumName(it->first)   // string (key)
+            << ':'
+            << it->second   // string's value 
+            << std::endl;
+    }
 }
 
 void StartDungeon(Character& character, std::vector<Enemy>& enemies) {
+    std::map<Sizes, int> enemiesKilled{{Sizes::Small, 0}, {Sizes::Medium, 0}, {Sizes::Big, 0} };
     for (int i = 0; i < enemies.size(); i++)
     {
-        std::cout << "Enemy " << i << " ---VS--- " << character.GetName() << std::endl;
+        std::cout << std::endl << "Enemy " << i << " ---VS--- " << character.GetName() << std::endl;
         Battle(character, enemies[i]);
         if (character.GetHealth() <= 0) {
-            FinishCombat(false);
+            FinishCombat(false, enemiesKilled);
             return;
         }
+        enemiesKilled[enemies[i].GetSize()]++;
     }
-    FinishCombat(true);
+    FinishCombat(true, enemiesKilled);
 }
 
 

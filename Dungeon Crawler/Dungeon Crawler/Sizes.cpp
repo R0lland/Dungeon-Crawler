@@ -15,3 +15,20 @@ Sizes intToEnumSize(int size) {
 
 	return Sizes::Small;
 }
+
+std::string GetEnumName(int size)
+{
+	switch (size)
+	{
+	case 1:
+		return "Small";
+	case 2:
+		return "Medium";
+	case 3:
+		return "Big";
+	case 4:
+		return "TOTAL";
+	}
+
+	return "Unassigned";
+}

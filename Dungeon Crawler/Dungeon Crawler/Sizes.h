@@ -1,5 +1,7 @@
 #pragma once
 
+#include<string>
+
 enum Sizes
 {
 	Small = 1,
@@ -9,3 +11,5 @@ enum Sizes
 };
 
 Sizes intToEnumSize(int size);
+
+std::string GetEnumName(int size);
