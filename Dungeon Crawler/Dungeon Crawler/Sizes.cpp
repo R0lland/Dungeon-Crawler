@@ -15,18 +15,3 @@ Sizes intToEnumSize(int size) {
 
 	return Sizes::Small;
 }
-
-int EnumSizeToInt(Sizes size) {
-	switch (size)
-	{
-	case Sizes::Small:
-		return 1;
-	case Sizes::Medium:
-		return 2;
-	case Sizes::Big:
-		return 3;
-	case Sizes::TOTAL_ITEMS:
-		return 4;
-	}
-	return 0;
-}

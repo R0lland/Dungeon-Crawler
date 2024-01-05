@@ -9,5 +9,3 @@ enum Sizes
 };
 
 Sizes intToEnumSize(int size);
-
-int EnumSizeToInt(Sizes size);
