@@ -13,4 +13,5 @@ public:
 	int GetHealth();
 	int GetDamage();
 	std::string GetName();
+	void TakeDamage(int damage);
 };

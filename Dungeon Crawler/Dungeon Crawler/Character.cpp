@@ -1,7 +1,7 @@
 #include "Character.h"
 
 const int STARTING_HEALTH = 200;
-const int STARTING_DAMAGE = 10;
+const int STARTING_DAMAGE = 50;
 
 Character::Character(std::string name) {
 	_name = name;
@@ -19,4 +19,8 @@ int Character::GetDamage() {
 
 std::string Character::GetName() {
 	return _name;
+}
+
+void Character::TakeDamage(int damage) {
+	_health -= damage;
 }

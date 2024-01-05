@@ -13,6 +13,7 @@ public:
 	int GetDamage();
 	int GetHealth();
 	Sizes GetSize();
+	void TakeDamage(int damage);
 };
 
 Enemy CreateEnemy();

@@ -27,6 +27,10 @@ Sizes Enemy::GetSize() {
 	return _size;
 }
 
+void Enemy::TakeDamage(int damage) {
+	_health -= damage;
+}
+
 Enemy CreateEnemy()
 {
 	int health = RandomizeMinMax(MIN_HEALTH, MAX_HEALTH);
