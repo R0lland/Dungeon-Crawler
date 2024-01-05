@@ -128,10 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DungeonCrawler.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="RandomizerUtils.cpp" />
+    <ClCompile Include="Sizes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="RandomizerUtils.h" />
     <ClInclude Include="Sizes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
