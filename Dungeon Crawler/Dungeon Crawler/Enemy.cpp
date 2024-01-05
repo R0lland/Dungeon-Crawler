@@ -12,6 +12,9 @@ Enemy::Enemy(int health, int damage, Sizes size) {
 	_size = size;
 }
 
+Enemy::Enemy() {
+}
+
 int Enemy::GetHealth() {
 	return _health;
 }
@@ -20,9 +23,14 @@ int Enemy::GetDamage() {
 	return _damage;
 }
 
-Enemy Enemy::CreateEnemy() {
+Sizes Enemy::GetSize() {
+	return _size;
+}
+
+Enemy CreateEnemy()
+{
 	int health = RandomizeMinMax(MIN_HEALTH, MAX_HEALTH);
 	int damage = RandomizeMinMax(MIN_DAMAGE, MAX_DAMAGE);
-	int sizeInt = RandomizeMinMax(1, EnumSizeToInt(Sizes::TOTAL_ITEMS));
+	int sizeInt = RandomizeMinMax(1, Sizes::TOTAL_ITEMS - 1);
 	return Enemy(health, damage, intToEnumSize(sizeInt));
 }

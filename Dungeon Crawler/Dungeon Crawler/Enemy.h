@@ -8,8 +8,11 @@ private:
 	Sizes _size = Sizes::Small;
 
 public:
+	Enemy();
 	Enemy(int health, int damage, Sizes size);
-	Enemy CreateEnemy();
 	int GetDamage();
 	int GetHealth();
+	Sizes GetSize();
 };
+
+Enemy CreateEnemy();
