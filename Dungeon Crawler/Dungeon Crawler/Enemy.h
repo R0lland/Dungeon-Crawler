@@ -3,16 +3,13 @@
 
 class Enemy {
 private:
-	int _health;
-	int _damage;
-	Sizes _size;
+	int _health = 100;
+	int _damage = 10;
+	Sizes _size = Sizes::Small;
 
 public:
-	void Setup();
-	int GetDamage() {
-		return _damage;
-	};
-	int GetHealth() {
-		return _health;
-	};
+	Enemy(int health, int damage, Sizes size);
+	Enemy CreateEnemy();
+	int GetDamage();
+	int GetHealth();
 };

@@ -1,9 +1,13 @@
 #pragma once
 
-enum class Sizes
+enum Sizes
 {
-	Small,
-	Medium,
-	Big,
-	TOTAL_ITEMS
+	Small = 1,
+	Medium = 2,
+	Big = 3,
+	TOTAL_ITEMS = 4
 };
+
+Sizes intToEnumSize(int size);
+
+int EnumSizeToInt(Sizes size);
