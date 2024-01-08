@@ -9,15 +9,15 @@ Character::Character(std::string name) {
 	_damage = STARTING_DAMAGE;
 }
 
-int Character::GetHealth() {
+int const Character::GetHealth() {
 	return _health;
 }
 
-int Character::GetDamage() {
+int const Character::GetDamage() {
 	return _damage;
 }
 
-std::string Character::GetName() {
+std::string& Character::GetName() {
 	return _name;
 }
 

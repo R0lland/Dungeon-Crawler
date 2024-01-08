@@ -2,6 +2,8 @@
 
 #include<iostream>
 
+//String_view
+
 class Character
 {
 private:
@@ -9,9 +11,9 @@ private:
 	int _health;
 	int _damage;
 public:
-	Character(std::string name);
-	int GetHealth();
-	int GetDamage();
-	std::string GetName();
+	explicit Character(std::string name);
+	int const GetHealth();
+	int const GetDamage();
+	std::string& GetName();
 	void TakeDamage(int damage);
 };

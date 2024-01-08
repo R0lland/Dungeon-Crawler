@@ -1,5 +1,7 @@
 #pragma once
 #include "Sizes.h"
+#include <iostream>
+#include <vector>
 
 class Enemy {
 private:
@@ -8,12 +10,11 @@ private:
 	Sizes _size = Sizes::Small;
 
 public:
-	Enemy();
 	Enemy(int health, int damage, Sizes size);
 	int GetDamage();
 	int GetHealth();
-	Sizes GetSize();
+	Sizes& GetSize();
 	void TakeDamage(int damage);
 };
 
-Enemy CreateEnemy();
+void CreateEnemies(int numberOfEnemies, std::vector<Enemy>& enemies);
